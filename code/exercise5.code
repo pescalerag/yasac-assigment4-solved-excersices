@@ -1,0 +1,14 @@
+//ejercicio 5
+//primero cargamos en un register el port08
+//luego copiamos el valor a otro register
+//sumamos 5 veces
+//movemos el resultado al port01
+
+code['h0] = {`LDS, `R0, 8'hf8}; //LDS R0,0xf8 port08
+code['h1] = {`MOV, `R1, 5'd0, `R0};
+code['h2] = {`ADD, `R1, 5'd0, `R0};
+code['h3] = {`ADD, `R1, 5'd0, `R0};
+code['h4] = {`ADD, `R1, 5'd0, `R0};
+code['h5] = {`ADD, `R1, 5'd0, `R0};
+code['h6] = {`STS, `R1, 8'hf1};
+code['h7] = {`STOP, 11'd0};

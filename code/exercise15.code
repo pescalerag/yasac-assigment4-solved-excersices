@@ -1,0 +1,11 @@
+// Test NEG
+code['h00] = {`LDS, `R1, 8'hf8};     // cargar valor del port8
+code['h01] = {`NEG, `R1, 8'd0};      // R1 = -R1
+code['h02] = {`STS, `R1, 8'hf1};     // mostrar la negación del port8 en port1
+
+// Test con -128 (debe setear VF)
+code['h03] = {`LDI, `R2, 8'h80};     // cargar -128 en R2
+code['h04] = {`NEG, `R2, 8'd0};      // negar R2 (debe setear VF)
+code['h05] = {`STS, `R2, 8'hf2};     // mostrar la negación de -128 en port2
+
+code['h06] = {`STOP, 11'd0};         // detener el programa

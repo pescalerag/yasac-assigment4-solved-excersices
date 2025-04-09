@@ -1,0 +1,14 @@
+//Prueba de CP y CPI.
+code['h00] = {`LDI,  `R2,  8'd10};     //carga 10 en R2
+code['h01] = {`LDS,  `R1,  8'hf8};     //carga el valor de port08 en R1
+code['h02] = {`CP,   `R1,  5'd0, `R2}; //compara R1 con R2
+code['h03] = {`STS,  `R1,  8'hf2};     //almacena el valor de R1 en port02 para comprobar que no se ha restado nada
+code['h04] = {`BRZS, 8'h07};           //Si son iguales, salta a la instruccion 7
+
+code['h05]={`LDI, `R3, 8'h1}; //si no son iguales, carga 1 en R3
+code['h06]={`STS, `R3, 8'hf1}; //y lo almacena en port01
+code['h07]={`STOP, 11'd0}; //finaliza el programa
+
+//Si son iguales
+code['h08] = {`STS, `R1, 8'hf1}; //almacena el valor de R1 en port01
+code['h09] = {`STOP, 11'd0}; //finaliza el programa

@@ -1,0 +1,46 @@
+
+//MAIN
+code['h0]={`LDS, `R0, 8'hf8}; //load port08 into r0 
+code['h1]={`LDI, `R2, 8'h41}; //load 65 into r2
+code['h2]={`SUB, `R0,5'd0, `R2}; //restar port08 por 65 (A en ASCII)
+code['h3]={`BRLO, 8'h11}; //saltar a NOL si no es una letra
+
+
+code['h4]={`LDS, `R0, 8'hf8}; //load port08 into r0
+code['h5]={`LDI, `R2, 8'h5B}; //load 91 into r2
+code['h6]={`SUB, `R0,5'd0, `R2}; //restar port08 por 91 (Z+1 en ASCII)
+code['h7]={`BRLO, 8'h16}; //saltar a MAY si está en el rango de A-Z
+
+code['h8]={`LDS, `R0, 8'hf8}; //load port08 into r0
+code['h9]={`LDI, `R2, 8'h61}; //load 97 into r2
+code['h0a]={`SUB, `R0,5'd0, `R2}; //restar port08 por 97 (a en ASCII)
+code['h0b]={`BRLO, 8'h11}; //saltar a NOL si no es una letra
+
+code['h0c]={`LDS, `R0, 8'hf8}; //load port08 into r0
+code['h0d]={`LDI, `R2, 8'h7B}; //load 123 into r2
+code['h0e]={`SUB, `R0,5'd0, `R2}; //restar port08 por 123 (z+1 en ASCII)
+code['h0f]={`BRLO, 8'h1a}; //saltar a MIN si está en el rango de a-z
+code['h10]={`JMP, 8'h11}; //saltar a NOL si no se cumple ninguna condición
+
+//NOL
+code['h11]={`LDI, `R1, 8'h00}; //load 0 into r1
+code['h12]={`STS, `R1, 8'hf2}; //store 0 into port02
+code['h13]={`LDS, `R0, 8'hf8}; //load port08 into r0
+code['h14]={`STS, `R0, 8'hf1}; //store port08 into port01
+code['h15]={`STOP, 11'd0}; //stop
+
+//MAY
+code['h16]={`LDS, `R0, 8'hf8}; //load port08 into r0
+code['h17]={`STS, `R0, 8'hf2}; //store port08 into port02
+code['h18]={`STS, `R0, 8'hf1}; //store port08 into port01
+code['h19]={`STOP, 11'd0}; //stop
+
+//MIN
+
+code['h1a]={`LDS, `R0, 8'hf8}; //load port08 into r0
+code['h1b]={`LDI, `R2, 8'b11011111}; //Third bit must be always 0 in upppercase letters
+code['h1c]={`AND, `R0, 5'd0, `R2}; //We convert the ascii letter to uppercase
+code['h1d]={`STS, `R0, 8'hf2}; //store port08 into port02
+code['h1e]={`LDS, `R0, 8'hf8}; //load port08 into r0
+code['h1f]={`STS, `R0, 8'hf1}; //store port08 into port01
+code['h20]={`STOP, 11'd0}; //stop

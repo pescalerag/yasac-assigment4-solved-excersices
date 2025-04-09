@@ -1,0 +1,6 @@
+// Test ADDI and SUBI
+code['h0] = {`LDI, `R0, 8'd5};  // R0 = 5
+code['h1] = {`ADDI, `R0, 8'd3};       // R0 = R0 + 3 = 8
+code['h2] = {`SUBI, `R0, 8'd2};       // R0 = R0 - 2 = 6
+code['h3] = {`STS, `R0, 8'hf1};      
+code['h4] = {`STOP, 11'd0};

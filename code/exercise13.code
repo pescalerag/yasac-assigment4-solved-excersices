@@ -1,0 +1,20 @@
+code['h0]={`LDS, `R0, 8'hf8}; //cargar port8 en R0
+code['h1]={`LDI, `R2, 8'h0}; //cargar 0 en R2 (se usa como contador de bits a 1)
+code['h2]={`LDI, `R4, 8'h8}; //cargar 8 en R4 (contador del bucle)
+code['h3]={`LDI, `R5, 8'h1}; //cargar 1 a R5 (para incrementar el contador)
+
+//LOOP
+code['h4]={`MOV, `R3, 5'd0,`R0}; //copiar port08 a R3 para realizar operaciones
+code['h5]={`AND, `R3, 5'd0,8'b00000001}; //quedarme con el último bit de R3
+code['h6]={`BRZS, 8'h8}; //saltar a la siguiente parte (NEXT) sin añadir 1 al contador
+code['h7]={`ADD, `R2, 5'd0, `R5}; //incrementar el contador en 1
+
+//NEXT
+code['h8]={`ROR, `R0, 8'h0}; //shift al numero del port8 para ver el siguiente bit
+code['h9]={`SUB, `R4, 5'd0, `R5}; //quitar 1 al contador del bucle
+code['h0a]={`BRZS, 8'h0c}; //saltar al final si se han hecho 8 repeticiones
+code['h0b]={`JMP, 8'h4}; //si no se han hecho 8 repeticiones volver al bucle
+
+//FIN
+code['h0c]={`STS, `R2, 8'hf1}; //Guardar el numero de 1 en el port01
+code['h0d]={`STOP, 11'd0}; //parar
