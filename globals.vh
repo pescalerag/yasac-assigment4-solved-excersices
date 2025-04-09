@@ -5,6 +5,7 @@
 // Date:        2021-02-27 (initial)
 
 // Assembly operation codes
+`define NOP     5'h00
 `define LDI     5'h01
 `define MOV     5'h02
 `define ADD     5'h03

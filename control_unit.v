@@ -77,7 +77,7 @@ module control_unit (
                 next_state = READY;
             `LDI, `MOV, `ADD, `SUB, `JMP, `BRBS, `BRBC,
             `AND, `OR, `EOR, `ROR, `ROL, `BCLR, `BSET,
-            `ADDI, `SUBI, `CP, `CPI, `NEG:
+            `ADDI, `SUBI, `CP, `CPI, `NEG, `NOP:
                 next_state = FETCH;
             `LD, `ST, `LDS, `STS, `PUSH, `POP, `CALL, `RET:
                 next_state = EXEC2;
@@ -129,6 +129,9 @@ module control_unit (
         end
         EXEC1:
             case (opcode)
+            `NOP: begin
+                next_state = FETCH;
+            end
             `LDI: begin
                 op = `ALU_TRB;
                 wreg = 1'b1; inm = 1'b1;

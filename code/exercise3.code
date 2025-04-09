@@ -1,4 +1,9 @@
-//ejercicio 3
+//EJERCICIO 3
+//Assuming that the last two values in the Fibonacci sequence are stored in
+//registers R0 and R1, write a program that display the next value of the sequence and updates R0 and
+//R1. Modify the sample test bench as needed and simulate the program.
+
+//SOLUCION PROPUESTA
 //primero hay que cargar el valor de R0 a R2, 
 //luego haces la suma de R2 + R1, 
 //luego haces que R0 sea R1 y que R1 sea R2
