@@ -1,14 +1,5 @@
-= YASAC stage 5
+= YASAC ASSIGMENT
 
-Stack and stack instructions: PUSH, POP, CALL, RET
-
-== Fixes/changes of previous stages work
-
-* Fix ALU_NEG carry and overflow generation.
-
-== Notes about stage 5
-
-* Control unit gets bigger. Modify carefully.
-* Forgot to initialize stack pointer when leaving READY state.
-* Bad placed "endcase" in EXEC1 processing made PUSH and CALL not to work.
-  Fixed after carefully checking control unit's case statements.
+En este repositorio encontraras todos los ejercicios resueltos de la asignación del YASAC.
+Estas soluciones se encuentran en la carpeta "code" y para ejecutarlos debes cambiar la linea
+`include del archivo code_mem.v
