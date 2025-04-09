@@ -1,4 +1,9 @@
-// Test ADDI and SUBI
+
+//EJERCICIO 6
+//Implement the ADDI and SUBI instructions. Write a simple program to
+//test them and simulate it.
+
+//SOLUCION PROPUESTA
 code['h0] = {`LDI, `R0, 8'd5};  // R0 = 5
 code['h1] = {`ADDI, `R0, 8'd3};       // R0 = R0 + 3 = 8
 code['h2] = {`SUBI, `R0, 8'd2};       // R0 = R0 - 2 = 6

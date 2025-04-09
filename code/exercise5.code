@@ -1,4 +1,8 @@
-//ejercicio 5
+//EJERCICIO 5
+//Write a program that outputs to port01 the number in port08 multiplied by 5.
+//Test it by simulation. Modify the sample test bench as appropriate.
+
+//SOLUCION PROPUESTA
 //primero cargamos en un register el port08
 //luego copiamos el valor a otro register
 //sumamos 5 veces

@@ -1,3 +1,7 @@
+//EJERCICIO 14
+//A number in port08 is encoded in packed natural BCD format (it holds two BCD
+//digits, each digit represented in base 2). Write a program that multiplies the number by 2 and saves
+//the result (in packed natural BCD format) in port02:port01 (the combination of the two ports).
 
 //SOLUCION PROPUESTA POR RodriguezLaraRafa en GitHub
 //https://github.com/RodriguezLaraRafa/yasacrepo/blob/main/exercises/stage4/code/fourteen.code

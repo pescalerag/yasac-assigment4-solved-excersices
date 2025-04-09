@@ -1,3 +1,8 @@
+//EJERCICIO 9
+//Write a program that shows a countdown from 10 to 0 in port01. At the end of the
+//countdown it should output the number 0x8888 in port02:port01.
+
+//SOLUCION PROPUESTA
 //INICIALIZACION
 code['h00] = {`LDI, `R0, 8'd10}; //iniciar contador en 10
 code['h01] = {`STS, `R0, 8'hf1}; //guardar 10 en port01

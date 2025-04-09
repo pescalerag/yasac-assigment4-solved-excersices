@@ -1,4 +1,9 @@
+//EJERCICIO 12
+//A number in port08 represents the ASCII code of a character. Write a program that
+//determines if the code corresponds to a letter. In that case, write the code of the upper case letter to
+//port02. In other case, write 0 to port02. In either case, write the input code to port01.
 
+//SOLUCION PROPUESTA
 //MAIN
 code['h0]={`LDS, `R0, 8'hf8}; //load port08 into r0 
 code['h1]={`LDI, `R2, 8'h41}; //load 65 into r2

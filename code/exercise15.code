@@ -1,3 +1,7 @@
+//EJERCICIO 15
+//Implement the NEG instruction. Write a test program and simulate it.
+
+//SOLUCION PROPUESTA
 // Test NEG
 code['h00] = {`LDS, `R1, 8'hf8};     // cargar valor del port8
 code['h01] = {`NEG, `R1, 8'd0};      // R1 = -R1

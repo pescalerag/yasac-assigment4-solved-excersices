@@ -1,4 +1,8 @@
+//EJERCICIO 8
+//Write a test program that, starting at n0 = 0, generates the sequence ni = i*k at port01,
+//where k is the value in port08 at the time the program starts executing.
 
+//SOLUCION PROPUESTA
 //INICIALIZACION
 code['h00]={`LDI, `R0, 8'h00}; //iniciar register en 0
 code['h01]={`STS, `R0, 8'hf1}; //guardar 0 en port01

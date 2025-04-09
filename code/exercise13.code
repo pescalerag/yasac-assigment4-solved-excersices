@@ -1,3 +1,10 @@
+//EJERCICIO 13
+//Write a program to count the number of bits set to 1 in port08. Save the number to
+//port01.
+
+//SOLUCION PROPUESTA
+
+//INICIALIZACION
 code['h0]={`LDS, `R0, 8'hf8}; //cargar port8 en R0
 code['h1]={`LDI, `R2, 8'h0}; //cargar 0 en R2 (se usa como contador de bits a 1)
 code['h2]={`LDI, `R4, 8'h8}; //cargar 8 en R4 (contador del bucle)

@@ -1,3 +1,11 @@
+//EJERCICIO 10
+//Instructions CP (ComPare) and CPI (ComPare with Immediate) are identical to SUB
+//and SUBI, except the former do not update the destination register, only set flags in the status
+//register. These are very useful to compare numbers and take decisions using branching instructions.
+//a Implement the CP and CPI instruction.
+//b Write a test program and simulate it.
+
+//SOLUCION PROPUESTA
 //Prueba de CP y CPI.
 code['h00] = {`LDI,  `R2,  8'd10};     //carga 10 en R2
 code['h01] = {`LDS,  `R1,  8'hf8};     //carga el valor de port08 en R1
