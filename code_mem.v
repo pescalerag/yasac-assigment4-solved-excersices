@@ -32,7 +32,7 @@ module code_mem (
 
         // Code memory contents (program)
 
-`include "code/exercise15.code" //CAMBIAR AQUI POR EL ARCHIVO (EJERCICIO A EJECUTAR)
+`include "code/exercise18.code" //CAMBIAR AQUI POR EL ARCHIVO (EJERCICIO A EJECUTAR)
 
     end
 endmodule

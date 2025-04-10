@@ -4,22 +4,37 @@
 Este repositorio contiene las soluciones a los ejercicios de la Asignación 4 del curso YASAC (Yet Another Simple Architecture Computer). YASAC es un procesador simple diseñado con fines educativos para aprender conceptos básicos de arquitectura de computadores.
 
 == Estructura del Repositorio
-* `/code/` - Contiene los archivos de código fuente con las soluciones de los ejercicios (del 3 al 15)
+* `/code/` - Contiene los archivos de código fuente con las soluciones de los ejercicios (del 3 al 18)
 
 == Cómo Ejecutar los Ejercicios
 1. Los archivos de código se encuentran en formato `.code` en el directorio `/code/`
 2. Para ejecutar cualquier ejercicio, debes modificar la línea `include del archivo `code_mem.v` para que apunte al ejercicio que deseas probar
 3. Cada archivo contiene la solución a un ejercicio específico del conjunto de instrucciones YASAC
+== Ejecución en iVerilog
+Para ejecutar los testbench en Verilog, necesitas usar dos comandos:
+
+1. Primero, compilar todos los archivos Verilog:
+[source,bash]
+----
+iverilog -o yasac_tb.vvp yasac_tb.v yasac.v control_unit.v data_unit.v code_mem.v data_mem.v alu.v
+----
+
+2. Luego, ejecutar el testbench compilado:
+[source,bash]
+----
+vvp yasac_tb.vvp
+----
 
 == Contenido
 El repositorio incluye soluciones para los siguientes ejercicios:
-* Ejercicios del 3 al 15 (excepto 7 y 11 que son implementar las respectivas stages)
+* Ejercicios del 3 al 18 (excepto 7, 11 y 16 que son implementar las respectivas stages)
 * Cada ejercicio demuestra diferentes aspectos y funcionalidades del conjunto de instrucciones YASAC
 
 == Notas Importantes
 * Asegúrate de tener el entorno YASAC correctamente configurado antes de ejecutar los ejercicios
 * Cada archivo de código está documentado con comentarios explicando su funcionamiento
 * Necesita iverilog o similar para ejecutar los archivos de código
+
 
 == Autor del YASAC
 Jorge Juan-Chico <jjchico@dte.us.es>

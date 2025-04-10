@@ -1,0 +1,21 @@
+//EJERCICIO 17
+//Write a subroutine that multiplies unsigned numbers in registers R1 and R2 and
+//returns the result in register R1. Do not take into account possible overflow. Use the subroutine in a
+//program that reads a number in port08 and puts the result from multiplying this number by 7 in
+//port01.
+
+//SOLUCION PROPUESTA
+code['h00] = {`LDS, `R1, 8'hf8};     // cargar valor del port8 en R1
+code['h01] = {`MOV, `R0, 5'd0, `R1};     // cargar valor del port8 en R0 para operaciones
+code['h02] = {`LDI, `R2, 8'd6};      // cargar 6 en R2 (queremos mult por 7 
+//pero la primera suma ya es multiplicar por 2 (no multiplicamos por 1))
+code['h03] = {`CALL, 3'h0,8'h06};         // llamar a la subrutina MULTIPLICACION
+code['h04] = {`STS, `R1, 8'hf1};     // guardar resultado en port1
+code['h05] = {`STOP, 11'd0};         // detener el programa
+
+//multiplicacion
+code['h06] ={`ADD, `R1, 5'd0,`R0}; //añade +1 a la multiplicacion
+code['h07] = {`SUBI, `R2, 8'd1}; //quita 1 al contador
+code['h08] = {`BRZS, 8'h0a}; //si el contador es 0, salta al return
+code['h09] = {`JMP, 3'h0,8'h06}; //si no es cero, sigue multiplicando
+code['h0a] = {`RET, 11'd0}; //return

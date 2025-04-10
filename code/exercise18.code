@@ -1,0 +1,35 @@
+//EJERCICIO 18
+//Write a blinking LED test program. The program should make an LED connected to
+//bit 0 of port03 to blink once per second (changes its value once every ½ second). Assume the
+//computer’s clock signal frequency is 1000Hz. Use subroutines to optimize the code when possible
+//(e.g. a subroutine that waits for half a second and a subroutine that complements bit 0 of port03 may
+//be useful here).
+
+//SOLUCION PROPUESTA
+//Necesitamos crear dos subrrutinas, una que espere medio segundo y otra que haga el led parpadear
+//Como la frecuencia es 1000Hz, cada mil ciclos se cumple 1 segundo, luego tenemos que esperar 500 ciclos
+code['h00] = {`LDS,  `R0,  8'hf3}; //empezamos cargando el valor de port3 en R0
+code['h01] = {`LDI,  `R1,  8'b00000001}; //y guardamos en R1 la máscara para hacer cambiar el último bit
+//Para hacer que parpadee podemos usar un XOR (EOR)
+//El XOR tiene la propiedad de que cuando 
+//operas un bit con 1, invierte ese bit, y cuando operas con 0, lo deja igual.
+
+code['h02] = {`CALL, 3'h0, 8'h05}; //Llamamos a la subrutina WAIT
+code['h03] = {`CALL, 3'h0, 8'h0c}; //Llamamos a la subrutina PARPADEO
+code['h04] = {`JMP, 3'h0, 8'h02}; //Bucle infinito
+
+//WAIT - 500 ciclos exactos
+code['h05] = {`LDI,  `R2,  8'd82}; //2 ciclos → R2 = 82
+code['h06] = {`NOP,  3'h0, 8'h00}; //2 ciclos
+
+code['h07] = {`SUBI, `R2,  8'd1};  //2 ciclos
+code['h08] = {`CPI,  `R2,  8'd0};  //2 ciclos
+code['h09] = {`BRZC, 8'h07}; //2 ciclos → Salta a SUBI si R2 != 0
+
+code['h0a] = {`NOP,  3'h0, 8'h00}; //2 ciclos → Ajuste final
+code['h0b] = {`RET,  3'h0, 8'h00}; //4 ciclos → Salir
+
+//PARPADEO
+code['h0c] = {`EOR,  `R0, 5'd0, `R1}; //Parpadeo
+code['h0d] = {`STS,  `R0,  8'hf3}; //Guardamos el valor del parpadeo en port3
+code['h0e] = {`RET,  11'd0};
