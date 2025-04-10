@@ -10,16 +10,17 @@ Este repositorio contiene las soluciones a los ejercicios de la Asignación 4 de
 1. Los archivos de código se encuentran en formato `.code` en el directorio `/code/`
 2. Para ejecutar cualquier ejercicio, debes modificar la línea `include del archivo `code_mem.v` para que apunte al ejercicio que deseas probar
 3. Cada archivo contiene la solución a un ejercicio específico del conjunto de instrucciones YASAC
+
 == Ejecución en iVerilog
 Para ejecutar los testbench en Verilog, necesitas usar dos comandos:
 
-1. Primero, compilar todos los archivos Verilog:
+1) Primero, compilar todos los archivos Verilog:
 [source,bash]
 ----
 iverilog -o yasac_tb.vvp yasac_tb.v yasac.v control_unit.v data_unit.v code_mem.v data_mem.v alu.v
 ----
 
-2. Luego, ejecutar el testbench compilado:
+2) Luego, ejecutar el testbench compilado:
 [source,bash]
 ----
 vvp yasac_tb.vvp
